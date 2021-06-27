@@ -1,0 +1,19 @@
+FROM alpine:3.12
+RUN apk update && apk upgrade
+EXPOSE 80 443 22
+#install nginx
+RUN apk add nginx
+#install open-ssl
+#RUN apk add openssl
+#copy the default
+COPY default.conf ./etc/nginx/conf.d/default.conf
+#copy the cert.key
+COPY cert.key ./etc/nginx/./cert.key
+#copy the cert.pem
+COPY cert.pem ./etc/nginx/./cert.pem
+#copy the nginx.sh
+COPY nginx.sh ./nginx.sh
+#simple test
+RUN echo "<h1 style='color : red;padding-left : 45vw'>Hello world!</h1>" > /var/www/localhost/htdocs/index.html;
+#run nginx
+CMD sh nginx.sh

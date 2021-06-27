@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  web:
+    build: ./nginx/
+    ports:
+      - "443:443"
+    volumes:
+      - build:/var/www/wordpress
+    networks:
+      - wordpress
+    container_name: web
+    image: web
+  wordpress:
+    build: ./wordpress/
+    volumes:
+      - build:/wordpress/
+networks:
+  wordpress:
+volumes:
+  build:
