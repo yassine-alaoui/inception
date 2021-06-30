@@ -1,20 +1,26 @@
-version: "3.9"
+version: "3.3"
 services:
   web:
     build: ./nginx/
     ports:
       - "443:443"
     volumes:
-      - build:/var/www/wordpress
+      - mydata:/wordpress/
     networks:
       - wordpress
     container_name: web
     image: web
+    links:
+      - wordpress
+
   wordpress:
     build: ./wordpress/
     volumes:
-      - build:/wordpress/
+      - mydata:/wordpress/
+    networks:
+      - wordpress
 networks:
   wordpress:
+    driver: bridge
 volumes:
-  build:
+  mydata:
