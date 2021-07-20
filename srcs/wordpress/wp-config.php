@@ -29,7 +29,7 @@ define( 'DB_USER', 'yassine' );
 define( 'DB_PASSWORD', 'yassine' );
 
 /** MySQL hostname */
-define( 'DB_HOST', '10.99.99.99' );
+define( 'DB_HOST', 'mariadb' );
 
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
@@ -77,7 +77,7 @@ $table_prefix = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define( 'WP_DEBUG', false );
+define( 'WP_DEBUG', true );
 
 /* That's all, stop editing! Happy publishing. */
 

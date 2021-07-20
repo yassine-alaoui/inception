@@ -10,15 +10,20 @@ services:
       - wordpress
     container_name: web
     image: web
-    links:
-      - wordpress
-
   wordpress:
     build: ./wordpress/
     volumes:
       - mydata:/wordpress/
     networks:
       - wordpress
+    container_name: wordpress
+    image: wordpress
+  mariadb:
+    build: ./mysql/
+    networks:
+      - wordpress
+    container_name: mariadb
+    image: mariadb
 networks:
   wordpress:
     driver: bridge

@@ -9,4 +9,4 @@ COPY setup.sh /
 #COPY wp_db.sql /
 COPY mariadb-server.cnf /etc/my.cnf.d
 #the final commands
-CMD sh setup.sh
+CMD top
