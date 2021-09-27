@@ -7,25 +7,33 @@ services:
     volumes:
       - mydata:/wordpress/
     networks:
-      - wordpress
+      - network
     container_name: web
     image: web
+    depends_on:
+      - wordpress
   wordpress:
     build: ./wordpress/
     volumes:
       - mydata:/wordpress/
     networks:
-      - wordpress
+      - network
     container_name: wordpress
     image: wordpress
+    depends_on:
+      - mariadb
   mariadb:
     build: ./mysql/
     networks:
-      - wordpress
+      - network
     container_name: mariadb
     image: mariadb
 networks:
-  wordpress:
+  network:
     driver: bridge
 volumes:
   mydata:
+    driver_opts:
+      type: "none"
+      o: bind
+      device: "/Users/yeayet/Desktop/tmp"

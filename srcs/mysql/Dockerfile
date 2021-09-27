@@ -6,7 +6,7 @@ RUN apk add --no-cache mariadb mariadb-client mariadb-common
 RUN apk add openrc
 #needed files
 COPY setup.sh /
-#COPY wp_db.sql /
+COPY wp_db.sql /
 COPY mariadb-server.cnf /etc/my.cnf.d
 #the final commands
-CMD top
+CMD sh setup.sh
